@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b8hlx1d5n7iiy"]
+
+[ext_resource type="Script" uid="uid://b6gnau5w588on" path="res://map.gd" id="1_soe1w"]
+[ext_resource type="PackedScene" uid="uid://bl3q3nnp4d0pf" path="res://assets/kenney_platformer-kit/Models/FBX format/block-grass.fbx" id="2_3t5od"]
+[ext_resource type="PackedScene" uid="uid://bufc765kdmabb" path="res://assets/kenney_platformer-kit/Models/FBX format/block-snow.fbx" id="3_l12ym"]
+[ext_resource type="PackedScene" uid="uid://dqhry04vebbm2" path="res://assets/kenney_platformer-kit/Models/GLB format/tree.glb" id="4_feutt"]
+[ext_resource type="PackedScene" uid="uid://cxv4j30kvycuh" path="res://assets/kenney_platformer-kit/Models/FBX format/tree-snow.fbx" id="5_ul3q5"]
+[ext_resource type="PackedScene" uid="uid://d24js4jukje85" path="res://assets/kenney_platformer-kit/Models/FBX format/barrel.fbx" id="6_yq1kh"]
+[ext_resource type="PackedScene" uid="uid://bac7c3jqo6ulc" path="res://assets/kenney_platformer-kit/Models/FBX format/fence-rope.fbx" id="7_7md8p"]
+[ext_resource type="PackedScene" uid="uid://dw5rvo837e55k" path="res://assets/kenney_platformer-kit/Models/FBX format/ladder.fbx" id="8_4u57l"]
+[ext_resource type="PackedScene" uid="uid://msgqmbycw11p" path="res://assets/kenney_platformer-kit/Models/FBX format/platform-fortified.fbx" id="9_kw42n"]
+
+[node name="Node3D" type="Node3D" unique_id=1855945861]
+script = ExtResource("1_soe1w")
+block_grass_scene = ExtResource("2_3t5od")
+block_snow_scene = ExtResource("3_l12ym")
+tree_green_scene = ExtResource("4_feutt")
+tree_snow_scene = ExtResource("5_ul3q5")
+barrel_scene = ExtResource("6_yq1kh")
+fence_scene = ExtResource("7_7md8p")
+ladder_scene = ExtResource("8_4u57l")
+bridge_scene = ExtResource("9_kw42n")

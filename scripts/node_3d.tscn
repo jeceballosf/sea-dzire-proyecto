@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://r6p4s2tkwk0h"]
+
+[ext_resource type="Script" uid="uid://cje6nx724q4f2" path="res://scripts/node_3d.gd" id="1_1tsdv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_htemk"]
+
+[node name="Node3D" type="Node3D" unique_id=599207002]
+script = ExtResource("1_1tsdv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=700781835]
+transform = Transform3D(0.7386063, -0.67413706, 0, 0.5127442, 0.5617791, -0.6492285, 0.437669, 0.47952425, 0.7605934, 0, 0, 0)
+mesh = SubResource("BoxMesh_htemk")

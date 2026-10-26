@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://sfr0wenvyfc5"]
+
+[ext_resource type="Script" uid="uid://dnl8po0gfq686" path="res://canvas_layer.gd" id="1_bfx32"]
+[ext_resource type="Script" uid="uid://ct4xtxf17bv6m" path="res://scripts/mini_mapa.gd" id="2_66g6d"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=415288092]
+script = ExtResource("1_bfx32")
+
+[node name="ContadorLabel" type="Label" parent="." unique_id=1970541958]
+offset_left = 6.0
+offset_right = 46.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 32
+
+[node name="MiniMapa" type="Control" parent="." unique_id=832484056]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchor_left = 32.0
+anchor_right = 32.0
+offset_left = -39876.0
+offset_top = 3.0
+offset_right = -39676.0
+offset_bottom = 203.0
+grow_horizontal = 0
+script = ExtResource("2_66g6d")

@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://cceq872pmu35u"]
+
+[ext_resource type="MeshLibrary" uid="uid://d33lu62b7v3dl" path="res://MeshLibrary/MeshLibraryKenney.meshlib" id="1_pni5r"]
+[ext_resource type="Material" uid="uid://drp21ayfi20ci" path="res://assets/materials/prototype/square_gray.material" id="1_rydfh"]
+[ext_resource type="PackedScene" uid="uid://ccnqt2ccpwvco" path="res://scenes/player.tscn" id="2_2p4ms"]
+[ext_resource type="Material" uid="uid://b8cogcbbew34c" path="res://assets/materials/prototype/square_green.material" id="2_4b1jd"]
+[ext_resource type="ArrayMesh" uid="uid://bhvptk6uf1qxg" path="res://fisherman/ToDPirateHologuise/PirateHologuise.obj" id="5_48ui8"]
+[ext_resource type="PackedScene" uid="uid://r6p4s2tkwk0h" path="res://scripts/node_3d.tscn" id="6_8a2i1"]
+[ext_resource type="PackedScene" uid="uid://sfr0wenvyfc5" path="res://scripts/canvas_layer.tscn" id="7_5kqkd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kcyhe"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_rydfh"]
+sky_material = SubResource("ProceduralSkyMaterial_kcyhe")
+
+[sub_resource type="Environment" id="Environment_2p4ms"]
+background_mode = 2
+sky = SubResource("Sky_rydfh")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_kcyhe"]
+size = Vector3(128, 1, 128)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rydfh"]
+size = Vector3(128, 1, 128)
+
+[node name="Game" type="Node3D" unique_id=2083668803]
+
+[node name="Map" type="Node3D" parent="." unique_id=1980290267]
+
+[node name="GridMap" type="GridMap" parent="Map" unique_id=679262887]
+mesh_library = ExtResource("1_pni5r")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(3, 0, 11)
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map" unique_id=1605817091]
+environment = SubResource("Environment_2p4ms")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map" unique_id=2118906981]
+transform = Transform3D(0.5000001, -0.75, 0.4330126, 2.7805946e-08, 0.49999994, 0.8660255, -0.8660254, -0.4330128, 0.25000006, 0, 5, 0)
+shadow_enabled = true
+
+[node name="Floor" type="MeshInstance3D" parent="Map" unique_id=1683737136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = ExtResource("1_rydfh")
+mesh = SubResource("BoxMesh_kcyhe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Map/Floor" unique_id=1429894537]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Floor/StaticBody3D" unique_id=1589430370]
+shape = SubResource("BoxShape3D_rydfh")
+debug_color = Color(1, 1, 1, 0.41960785)
+debug_fill = false
+
+[node name="Obstacles" type="CSGCombiner3D" parent="Map" unique_id=593919012]
+material_override = ExtResource("2_4b1jd")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Obstacles" unique_id=1464969710]
+transform = Transform3D(0.90630776, -0.42261827, 0, 0.42261827, 0.90630776, 0, 0, 0, 1, 5.087962, 1.4292285, -8.198498)
+size = Vector3(11.1, 0.5, 5.5)
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="Map/Obstacles" unique_id=2071421306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.75, -8.2)
+size = Vector3(6, 4.5, 5.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Obstacles" unique_id=1405232424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 3.5, -1.9000001)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Obstacles" unique_id=499362548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 3.5, 2.1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Obstacles" unique_id=1313868752]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 3.5, 6.1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Obstacles" unique_id=351976756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 3.5, 10.1)
+
+[node name="Actors" type="Node3D" parent="." unique_id=2094495535]
+
+[node name="Player" parent="Actors" unique_id=350162904 instance=ExtResource("2_2p4ms")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.32277614, 0, 0)
+
+[node name="Collision" parent="Actors/Player" index="0" unique_id=1898909592]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Actors/Player/Model" parent_id_path=PackedInt32Array(350162904, 860007929) index="0" unique_id=973885365]
+transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0.047183335, 0, 0.48741102)
+visible = false
+mesh = ExtResource("5_48ui8")
+
+[node name="Skeleton3D" parent="Actors/Player/Model/Gobot" parent_id_path=PackedInt32Array(350162904, 1043174273) index="0" unique_id=1272063516]
+visible = false
+bones/1/position = Vector3(0.12536073, 0.098913886, 0.07289007)
+bones/1/rotation = Quaternion(0.77254933, 0.10769145, -0.13622133, 0.6107487)
+bones/2/position = Vector3(-0.109875254, 0.0989111, -0.051076505)
+bones/2/rotation = Quaternion(0.67936844, -0.31008527, 0.39223355, 0.5370833)
+bones/3/position = Vector3(0, 0.35067654, 0)
+bones/3/rotation = Quaternion(0.06973376, 0.025454111, -0.0017799246, 0.99723923)
+bones/4/rotation = Quaternion(1, -5.8021393e-11, -7.502958e-08, 3.7264845e-09)
+bones/5/rotation = Quaternion(-0.49437892, -0.13633177, -0.047812946, 0.85715634)
+bones/6/rotation = Quaternion(0.3755605, 1.048605e-06, -1.2819491e-05, 0.92679787)
+bones/7/rotation = Quaternion(-0.22011586, 0.54674965, 0.23374742, 0.77328914)
+bones/8/rotation = Quaternion(0.5188291, -9.662679e-07, 1.775719e-05, 0.85487807)
+bones/9/rotation = Quaternion(-0.67151463, -0.2628288, -0.63452494, 0.27814975)
+bones/10/rotation = Quaternion(2.1693721e-07, 5.3554135e-07, -0.39502862, 0.9186688)
+bones/11/rotation = Quaternion(-0.28973183, -0.63745815, -0.21743849, 0.680017)
+bones/12/rotation = Quaternion(0.48790628, -0.017439913, 0.008545416, 0.87268)
+bones/13/rotation = Quaternion(-0.371224, -0.0019769727, 0.0058536613, 0.9285229)
+bones/14/rotation = Quaternion(-0.5023332, 1.5004881e-05, -2.8505434e-05, 0.8646742)
+bones/15/rotation = Quaternion(-0.37122393, -0.0019769808, 0.0058536916, 0.9285229)
+bones/16/rotation = Quaternion(-0.50233316, 1.4999915e-05, -2.85068e-05, 0.8646742)
+bones/17/rotation = Quaternion(-0.64422077, 0.27429995, 0.6622186, 0.2668443)
+bones/18/rotation = Quaternion(2.2720279e-07, -5.847486e-07, 0.39502862, 0.9186688)
+bones/19/rotation = Quaternion(-0.28973186, 0.6374581, 0.21743849, 0.680017)
+bones/20/rotation = Quaternion(0.4879063, 0.017439917, -0.008545413, 0.87268)
+bones/21/rotation = Quaternion(-0.37122408, 0.0019769655, -0.00585365, 0.9285227)
+bones/22/rotation = Quaternion(-0.5023332, -1.4987976e-05, 2.8498614e-05, 0.8646742)
+bones/23/rotation = Quaternion(-0.371224, 0.0019769839, -0.005853679, 0.9285229)
+bones/24/rotation = Quaternion(-0.5023332, -1.5003436e-05, 2.849141e-05, 0.8646742)
+bones/25/position = Vector3(2.7943264e-10, 0.18997708, -8.338247e-09)
+bones/25/rotation = Quaternion(-0.06975651, 4.5896467e-08, 3.0344964e-09, 0.99756414)
+
+[node name="Gobot" parent="Actors/Player/Model/Gobot/Skeleton3D" index="0" unique_id=888420355]
+visible = false
+
+[node name="Node3D" parent="." unique_id=336396856 instance=ExtResource("6_8a2i1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6417181, 0.8618759, 4.1042395)
+
+[node name="Node3D2" parent="." unique_id=1143857432 instance=ExtResource("6_8a2i1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.689953, 0.8618759, 3.4004235)
+
+[node name="Node3D3" parent="." unique_id=1693397098 instance=ExtResource("6_8a2i1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.276875, 4.861876, -8.019985)
+
+[node name="Node3D4" parent="." unique_id=599207002 instance=ExtResource("6_8a2i1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.655181, 5.0841866, 10.106434)
+
+[node name="Node3D5" parent="." unique_id=1883067250 instance=ExtResource("6_8a2i1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0398283, 0.85279393, 14.95555)
+
+[node name="Node3D6" parent="." unique_id=391958923 instance=ExtResource("6_8a2i1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.580101, 0.8618759, 10.089934)
+
+[node name="Node3D7" parent="." unique_id=1106960698 instance=ExtResource("6_8a2i1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3242722, 0.8618759, 19.58271)
+
+[node name="Node3D8" parent="." unique_id=201462109 instance=ExtResource("6_8a2i1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.323969, 0.8618759, 4.96609)
+
+[node name="Node3D9" parent="." unique_id=1709414879 instance=ExtResource("6_8a2i1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.188152, 0.8618759, 16.758743)
+
+[node name="Node3D10" parent="." unique_id=205970079 instance=ExtResource("6_8a2i1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.615326, 0.8618759, -2.1752472)
+
+[node name="Node3D11" parent="." unique_id=1371392088 instance=ExtResource("6_8a2i1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.388011, 0.8618759, -7.26146)
+
+[node name="Node3D12" parent="." unique_id=1543058981 instance=ExtResource("6_8a2i1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.119751, 0.8618759, 10.576953)
+
+[node name="CanvasLayer" parent="." unique_id=415288092 instance=ExtResource("7_5kqkd")]
+
+[editable path="Actors/Player"]
+[editable path="Actors/Player/Model/Gobot"]

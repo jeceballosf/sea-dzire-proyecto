@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cr27nnmhvh7g3"]
+
+[ext_resource type="Script" uid="uid://bpejq6nhpxk2v" path="res://residuo.gd" id="1_i3vbh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i3vbh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hm08h"]
+size = Vector3(2, 2, 2)
+
+[node name="Node3D" type="Node3D" unique_id=1520672343]
+
+[node name="Residuo" type="Area3D" parent="." unique_id=1586948213]
+script = ExtResource("1_i3vbh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Residuo" unique_id=1781629408]
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000038, 0, -0.22338867, 0)
+mesh = SubResource("BoxMesh_i3vbh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Residuo" unique_id=1752130272]
+shape = SubResource("BoxShape3D_hm08h")
+
+[node name="Node" type="Node" parent="Residuo" unique_id=1615386491]
+
+[connection signal="body_entered" from="Residuo" to="Residuo" method="_on_body_entered"]

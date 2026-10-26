@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://d1jmrt1jlry4u"]
+
+[ext_resource type="Script" uid="uid://bsd4bv2840lvw" path="res://agua.gd" id="1_ldk1s"]
+[ext_resource type="Shader" uid="uid://sn7xspd6o02n" path="res://ocean.gdshader" id="2_veh4v"]
+[ext_resource type="Script" uid="uid://c5wm2khfjvtaq" path="res://zona_reinicio.gd" id="3_notw7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8a2i1"]
+render_priority = 0
+shader = ExtResource("2_veh4v")
+shader_parameter/WATER_COL = Color(0.039215688, 0.9372549, 0.8784314, 1)
+shader_parameter/WATER2_COL = Color(0.039215688, 1, 0.5529412, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(5, 10)
+shader_parameter/height = 2.0
+shader_parameter/wave_size = Vector2(2, 2)
+shader_parameter/wave_speed = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8w0r3"]
+material = SubResource("ShaderMaterial_8a2i1")
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8w0r3"]
+size = Vector3(100, 2, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydnqi"]
+albedo_color = Color(0.039215688, 0.5882353, 0.5294118, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_w7mgy"]
+material = SubResource("StandardMaterial3D_ydnqi")
+size = Vector3(200, 38.01799, 200)
+
+[node name="Agua" type="Area3D" unique_id=960515113]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+script = ExtResource("1_ldk1s")
+
+[node name="Superficie" type="MeshInstance3D" parent="." unique_id=420125512]
+transform = Transform3D(63.80487, 0, 0, 0, 2.8160007, 0, 0, 0, 170.80853, 0, 0, 0)
+mesh = SubResource("PlaneMesh_8w0r3")
+
+[node name="ZonaReinicio" type="Area3D" parent="." unique_id=1798435711]
+script = ExtResource("3_notw7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZonaReinicio" unique_id=95075328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40, 0)
+shape = SubResource("BoxShape3D_8w0r3")
+
+[node name="FondoAgua" type="MeshInstance3D" parent="." unique_id=691066911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20.991005, 0)
+mesh = SubResource("BoxMesh_w7mgy")

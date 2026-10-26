@@ -1,0 +1,53 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 19.05.2015 11:03:35
+
+newmtl Material__46
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Hologuise1_Color.png
+	map_Kd Hologuise1_Color.png
+	map_Ke Hologuise1_Light.png
+	map_bump Hologuise1_Normal.png
+	bump Hologuise1_Normal.png
+
+newmtl Material__47
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Hologuise2_Color.png
+	map_Kd Hologuise2_Color.png
+	map_Ke Hologuise2_Light.png
+	map_bump Hologuise2_Normal.png
+	bump Hologuise2_Normal.png
+
+newmtl Material__48
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Hologuise3_Color.png
+	map_Kd Hologuise3_Color.png
+	map_Ke Hologuise3_Light.png
+	map_bump Hologuise3_Normal.png
+	bump Hologuise3_Normal.png
